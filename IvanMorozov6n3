@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+ 
+namespace consoleT_6
+{
+   class Task4
+   {
+       int[][] arr;
+       int [] newArr;
+       public Task4(int N)
+       {
+           Random r = new Random();
+           arr = new int[N][];
+           newArr = new int[N];
+           for (int i = 0; i < N; i++)
+           {
+               
+               arr[i] = new int[r.Next(1, 4)];
+               for (int j =0; j<arr[i].Length; j++)
+               {
+                   arr[i][j] = r.Next(-20, 20);
+               }                
+           }
+           NewArr();
+       }
+       public string Show()
+       {
+           string str = "";
+           foreach (int[] i in arr)
+           {
+               foreach(int a in i)
+               {
+                   str += a + " ";
+               }
+               str += '\n';
+           }
+           return str;
+       }
+       void NewArr()
+       {
+           for (int i=0; i<newArr.Length; i++)
+           {
+               newArr[i] = 0;
+               foreach (int a in arr[i])
+               {
+                   newArr[i] += a;
+               }
+           }    
+       }
+       public string ShowNewArr()
+       {
+           string str = "";
+           foreach (int a in newArr)
+           {
+               str += a + " ";
+           }
+           return str;
+       }
+       public int Max
+       {
+           get
+           {
+               int max = newArr[0];
+               foreach (int a in newArr)
+               {
+                   if (a > max)
+                   {
+                       max = a;
+                   }
+               }
+               return max;
+           }
+       }
+   }
+}
